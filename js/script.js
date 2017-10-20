@@ -1,11 +1,33 @@
 var $list, $myNodelist;
 
 
-
 function main() {
     prepareDOMElements();
     addDOMEventListeners();
     countdown();
+
+    // dodawania nowego elementu 
+
+    var add = document.getElementById('addBtn');
+    add.onclick = function (event) {
+        var inputText = document.getElementById('myInput').value;
+
+        //to jest tworzenie nowego elementu li
+        var node = document.createElement("li");
+        var textnode = document.createTextNode(inputText);
+        node.appendChild(textnode);
+
+        // to jest tworzenie nowego buttona
+        var buttonNode = document.createElement("button");
+        var textnode1 = document.createTextNode("DELETE");
+        buttonNode.appendChild(textnode1);
+        node.appendChild(buttonNode);
+
+        // dodawanie dziecka ( li ) do listy ( ul )
+        var dodawanie = document.getElementById('myList');
+        dodawanie.appendChild(node);
+
+    };
 }
 
 function wypisz() {
@@ -14,13 +36,21 @@ function wypisz() {
 
 function deleteTask() {
     console.log('1');
-    var close = document.getElementById('delete');
-    close.onClick = function () {
-        console.log('3');
+    var close = document.getElementById('myList');
+    console.log(close);
+    close.onclick = function (event) {
+        if (event.target.className === 'delete') {
+            var parentElement = event.target.parentElement;
+            parentElement.style.display = 'none';
+        }
+        console.log(event); //toDo - sprawić żeby usunięty element się usunął 
     };
-};
+}
+;
 
 deleteTask(); //wywołanie funkcji//
+
+
 
 function countdown() {
     var today = new Date();
@@ -48,8 +78,9 @@ function countdown() {
 }
 
 function prepareDOMElements() {
-    $myNodelist = document.getElementsByTagName("LI");
+    $myNodelist = document.getElementsByTagName("li");
     $list = document.querySelector('ul');
+    console.log($myNodelist);
 }
 
 function addDOMEventListeners() {
@@ -57,7 +88,7 @@ function addDOMEventListeners() {
 }
 
 function listClickHandler(event) {
-    if (event.target.tagName === 'LI') {
+    if (event.target.tagName === 'li') {
         event.target.classList.toggle('checked');
     } else if (event.target.className === 'close') {
         var parentElement = event.target.parentElement;
@@ -65,3 +96,6 @@ function listClickHandler(event) {
     }
 }
 ;
+
+$(document).ready(main);
+

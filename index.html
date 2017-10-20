@@ -13,16 +13,17 @@
 	<div id="inputArea" class="header">
 		<h2>My To Do List</h2>
 		<input type="text" id="myInput" placeholder="Title...">
-		<span onclick="newElement()" class="addBtn">Add</span>
+		<span onclick="newElement()" id ="addBtn" class="addBtn">Add</span>
 	</div>
 
 	<ul id="myList">
             <li>Learn JS<button type='button' id='delete' class='delete'>DELETE</button></li>
             <li class="checked">Send project to my mentors<button type='button' class='delete'>DELETE</button></li>
-		<li>Watch football<button type='button' class='delete'>DELETE</button></li>
-		<li>Read a book<button type='button' class='delete'>DELETE</button></li>
-		<li>Make a dinner<button class='delete' type='button'>DELETE</button></li>
+            <li>Watch football<button type='button' class='delete'>DELETE</button></li>
+            <li>Read a book<button type='button' class='delete'>DELETE</button></li>
+            <li>Make a dinner<button class='delete' type='button'>DELETE</button></li>
 	</ul>
-	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script> 
 </body>
 </html>
