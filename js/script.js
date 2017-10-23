@@ -34,21 +34,34 @@ function wypisz() {
     console.log('2');
 }
 
-function deleteTask() {
-    console.log('1');
-    var close = document.getElementById('myList');
-    console.log(close);
-    close.onclick = function (event) {
-        if (event.target.className === 'delete') {
+//function deleteTask() {
+//    console.log('1');
+//    var close = document.getElementById('myList');
+//    console.log(close);
+//    close.onclick = function (event) {
+//        
+//        console.log(event); //toDo - sprawić żeby usunięty element się usunął 
+//    };
+//}
+//;
+
+//deleteTask(); //wywołanie funkcji//
+
+function checkTask() {
+    var check = document.getElementById('myList');
+    check.onclick = function (event) {
+        console.log(event.target.tagName);
+        if (event.target.tagName === 'LI') {
+            console.log(event);
+            event.target.classList.toggle('checked');
+        }
+        else if (event.target.className === 'delete') {
             var parentElement = event.target.parentElement;
             parentElement.style.display = 'none';
         }
-        console.log(event); //toDo - sprawić żeby usunięty element się usunął 
     };
 }
-;
-
-deleteTask(); //wywołanie funkcji//
+checkTask();
 
 
 
@@ -98,4 +111,3 @@ function listClickHandler(event) {
 ;
 
 $(document).ready(main);
-
